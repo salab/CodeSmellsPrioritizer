@@ -28,7 +28,7 @@ Example: Smells.csv
 
 #### Impact analysis file:
 
-| Issue ID  | Entity Name | Score |
+| Issue Id  | Entity Name | Score |
 | --------- | ----------- | ----- |
 | 1001      | ClassA      | 0.321 |
 | 1001      | ClassB      | 0.211 |

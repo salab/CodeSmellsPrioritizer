@@ -1,22 +1,22 @@
 # Code Smells Prioritizer (CSP) tool #
-
+This is a tool for prioritizing code smells using developers' context. Please refer to our [publication](#publication) for more details.
 ## How to use
 1. Prepare the input files: code smell file and impact analysis file (see [Input File Format](#input-file-format)).
 2. Use the following command to generate the result.
-#### Usage: ####
+#### Usage:
 ```
  python CSP.py code_smell_file_name impact_analysis_file_name [alpha]  
 ```
 
-#### Example: ####
+#### Example:
 ```
 python CSP.py Smells.csv IA.csv 1
 ```
   
 Output: Results.csv
 
-## Input File Format ##
-#### Code smell file: ####
+## Input File Format
+#### Code smell file:
 
 | Id	| Severity	| Entity Name	| Package Name	| Smell Type |
 | --- | ------- |  ---------- |  ----------- |  --------- | 
@@ -26,7 +26,7 @@ Output: Results.csv
 
 Example: Smells.csv
 
-#### Impact analysis file: ####
+#### Impact analysis file:
 
 | Issue ID  | Entity Name | Score |
 | --------- | ----------- | ----- |
@@ -35,3 +35,6 @@ Example: Smells.csv
 | .         | .           | .     |
 
 Example: IA.csv
+
+## Publication
+To be added

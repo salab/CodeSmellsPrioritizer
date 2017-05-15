@@ -27,7 +27,8 @@ python CSP.py Smells.csv IA.csv 1 40
 | .  | .        | .           | .                  | .          |
 
 *Smell ID* = A Unique ID of each smell  
-*Severity* = An integer representing the severity of each smell (e.g. 1-10)
+*Severity* = An integer representing the severity of each smell (e.g. 1-10)  
+*Package Name* = Package name of the class (in case there is folder name in front of it, the tool will automatically remove the folder name, e.g., src/java/com.package.ui → com.package.ui)  
 
 Example: Smells.csv
 
@@ -38,6 +39,8 @@ Example: Smells.csv
 | 1001      | com.package.ui.ClassA      | 0.321 |
 | 1001      | com.package.model.ClassB   | 0.211 |
 | .         | .                          | .     |
+
+Please remove the header line of the file before using the tool (if any).
 
 Example: IA.csv
 

@@ -9,7 +9,7 @@ from operator import attrgetter
 #####################
 # Parameters
 #####################
-result_file_name = 'Results.csv'
+result_file_name = 'Result.csv'
 
 
 #####################
@@ -26,13 +26,13 @@ def main(code_smell_file_name, ia_file_name, alpha=1, cut_point='40'):
 
 
 class CodeSmell(object):
-    def __init__(self, id_number=None, severity=None, entity_name=None, package_name=None,
+    def __init__(self, smell_id=None, severity=None, class_name=None, package_name=None,
                  smell_type=None, ranking=0, cri=0, n_cri=0, n_severity=0):
-        self.id_number = id_number
+        self.smell_id = smell_id
         self.ranking = ranking
         self.cri = cri
         self.severity = severity
-        self.entity_name = entity_name
+        self.class_name = class_name
         self.package_name = package_name
         self.smell_type = smell_type
         self.matched = False
@@ -50,16 +50,16 @@ def write_code_smells_to_csv_file(code_smells, csv_file_name):
     code_smells.sort(key=operator.attrgetter('ranking'), reverse=True)
     csv_file = open(csv_file_name, 'w')
     try:
-        fieldnames = ('Id', 'Ranking', 'CRI', 'Severity', 'Entity Name', 'Package Name', 'Smell Type')
+        fieldnames = ('Smell ID', 'Ranking', 'CRI', 'Severity', 'Class Name', 'Package Name', 'Smell Type')
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         headers = dict((n, n) for n in fieldnames)
         writer.writerow(headers)
         for code_smell in code_smells:
-            writer.writerow({'Id': code_smell.id_number,
+            writer.writerow({'Smell ID': code_smell.smell_id,
                              'Ranking': code_smell.ranking,
                              'CRI': code_smell.cri,
                              'Severity': code_smell.severity,
-                             'Entity Name': code_smell.entity_name,
+                             'Class Name': code_smell.class_name,
                              'Package Name': code_smell.package_name,
                              'Smell Type': code_smell.smell_type,
                              })
@@ -98,7 +98,7 @@ def calculate_cri(code_smells, ia_file_name, cut_point):
                 ia_class_name[0] = re.sub('<.[^<|>]*>', '', ia_class_name[0])
 
     for code_smell in scored_code_smells:
-        code_smell_full_name = str(code_smell.package_name) + '.' + str(code_smell.entity_name)
+        code_smell_full_name = str(code_smell.package_name) + '.' + str(code_smell.class_name)
         code_smell_full_name = code_smell_full_name.split('/')[-1]
 
         for impact_analysis in impact_analyses:

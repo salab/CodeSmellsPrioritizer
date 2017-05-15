@@ -48,7 +48,7 @@ class ImpactAnalysis(object):
 
 def write_code_smells_to_csv_file(code_smells, csv_file_name):
     code_smells.sort(key=operator.attrgetter('ranking'), reverse=True)
-    csv_file = open(csv_file_name, 'wb')
+    csv_file = open(csv_file_name, 'w')
     try:
         fieldnames = ('Id', 'Ranking', 'CRI', 'Severity', 'Entity Name', 'Package Name', 'Smell Type')
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)

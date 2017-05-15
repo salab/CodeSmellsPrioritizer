@@ -15,10 +15,10 @@ result_file_name = 'Results.csv'
 #####################
 # Start process
 #####################
-def main(code_smell_file_name, ia_file_name, alpha=1):
+def main(code_smell_file_name, ia_file_name, alpha=1, cut_point=40):
     code_smells = get_code_smells_from_csv_file(code_smell_file_name)
     code_smells.sort(key=lambda x: int(x.severity), reverse=True)
-    scored_code_smells = calculate_cri(code_smells, ia_file_name)
+    scored_code_smells = calculate_cri(code_smells, ia_file_name, cut_point)
     scored_code_smells = calculate_ranking(scored_code_smells, alpha)
     scored_code_smells.sort(key=lambda x: x.ranking, reverse=True)
     write_code_smells_to_csv_file(scored_code_smells, result_file_name)
@@ -67,7 +67,7 @@ def write_code_smells_to_csv_file(code_smells, csv_file_name):
         csv_file.close()
 
 
-def calculate_cri(code_smells, ia_file_name, cut_point='40'):
+def calculate_cri(code_smells, ia_file_name, cut_point):
     scored_code_smells = copy.deepcopy(code_smells)
     impact_analysis_input_file = open(ia_file_name, 'rU')
     impact_analyses = []
@@ -153,3 +153,5 @@ if __name__ == '__main__':
         main(sys.argv[1], sys.argv[2])
     elif len(sys.argv) == 4:
         main(sys.argv[1], sys.argv[2], float(sys.argv[3]))
+    elif len(sys.argv) == 5:
+        main(sys.argv[1], sys.argv[2], float(sys.argv[3]), int(sys.argv[4]))

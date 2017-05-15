@@ -15,7 +15,7 @@ result_file_name = 'Results.csv'
 #####################
 # Start process
 #####################
-def main(code_smell_file_name, ia_file_name, alpha=1, cut_point=40):
+def main(code_smell_file_name, ia_file_name, alpha=1, cut_point='40'):
     code_smells = get_code_smells_from_csv_file(code_smell_file_name)
     code_smells.sort(key=lambda x: int(x.severity), reverse=True)
     scored_code_smells = calculate_cri(code_smells, ia_file_name, cut_point)
@@ -154,4 +154,4 @@ if __name__ == '__main__':
     elif len(sys.argv) == 4:
         main(sys.argv[1], sys.argv[2], float(sys.argv[3]))
     elif len(sys.argv) == 5:
-        main(sys.argv[1], sys.argv[2], float(sys.argv[3]), int(sys.argv[4]))
+        main(sys.argv[1], sys.argv[2], float(sys.argv[3]), sys.argv[4])

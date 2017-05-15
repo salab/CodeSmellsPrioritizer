@@ -1,5 +1,5 @@
 # Code Smells Prioritizer (CSP) tool #
-This is a tool for prioritizing code smells using developers' context. Please refer to our [publication](#publication) for more details.
+This is a tool for prioritizing code smells using developers' context. Note that this tool supports only class level code smells. Please refer to our [publication](#publication) for more details.
 ## How to use
 1. Prepare the input files: code smell file and impact analysis file (see [Input File Format](#input-file-format)).
 2. Use the following command to generate the result.

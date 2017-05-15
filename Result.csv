@@ -1,4 +1,4 @@
-Id,Ranking,CRI,Severity,Entity Name,Package Name,Smell Type
+Smell ID,Ranking,CRI,Severity,Class Name,Package Name,Smell Type
 75,1.0,4.387586820000001,2,Project,argouml/src_new/org.argouml.kernel,GodClass
 96,0.9066517753829881,3.97801338,3,StylePanel,argouml/src_new/org.argouml.ui,SchizophrenicClass
 98,0.7843442765196378,3.4413786099999992,5,ProjectBrowser,argouml/src_new/org.argouml.ui,GodClass
